@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "723171376139",
+    "project_id": "pipfa-13449",
+    "storage_bucket": "pipfa-13449.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:723171376139:android:bc3ae8b0caa7c282949b0e",
+        "android_client_info": {
+          "package_name": "com.example.class11"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBpbEzoMa8m0KYJjX0Po66ZNAgGUflWg6M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
