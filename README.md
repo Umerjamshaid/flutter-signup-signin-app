@@ -1,6 +1,3 @@
-Here's the professionally styled `README.md` updated to match your actual code with enhanced visuals:
-
-```markdown
 # 🔐 Flutter SignUp Screen with Firebase
 
 ![SignUp Screen Banner](https://i.imgur.com/5vJkK8l.png)  
