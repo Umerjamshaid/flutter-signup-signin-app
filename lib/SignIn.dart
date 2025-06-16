@@ -1,6 +1,9 @@
+import 'package:class11/Dashboard.dart';
 import 'package:class11/SignUp.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class SignIn extends StatefulWidget {
   const SignIn({super.key});
@@ -62,6 +65,7 @@ class _SignInState extends State<SignIn> {
               child: Text("Create New Account?"),
             ),
             SizedBox(height: 20),
+            SizedBox(height: 20),
             ElevatedButton(
               onPressed: () async {
                 if (emailctrl.text == "" || passwordctrl == "") {
@@ -90,7 +94,6 @@ class _SignInState extends State<SignIn> {
                   passwordctrl.clear();
                 }
               },
-
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.black,
                 foregroundColor: Colors.white,
@@ -100,6 +103,50 @@ class _SignInState extends State<SignIn> {
                 ),
               ),
               child: Text("SignIn"),
+            ),
+            SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () async {
+                final GoogleSignIn _googleSignIn = GoogleSignIn();
+
+                try {
+                  final GoogleSignInAccount? googleUser =
+                      await _googleSignIn.signIn();
+
+                  if (googleUser != null) {
+                    final GoogleSignInAuthentication googleAuth =
+                        await googleUser.authentication;
+
+                    final credential = GoogleAuthProvider.credential(
+                      accessToken: googleAuth.accessToken,
+                      idToken: googleAuth.idToken,
+                    );
+
+                    await FirebaseAuth.instance.signInWithCredential(
+                      credential,
+                    );
+
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(builder: (context) => Dashboard()),
+                    );
+                  }
+                } on FirebaseAuthException catch (e) {
+                  print('FirebaseAuthException: ${e.code}');
+                } catch (e) {
+                  print('Error: $e');
+                }
+              },
+
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.black,
+                foregroundColor: Colors.white,
+                minimumSize: Size(5, 60),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(15),
+                ),
+              ),
+              child: Text("G"),
             ),
           ],
         ),
