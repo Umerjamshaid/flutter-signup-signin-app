@@ -1,5 +1,6 @@
 import 'package:class11/Dashboard.dart';
 import 'package:class11/SignUp.dart';
+import 'package:class11/password-reset.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -64,8 +65,18 @@ class _SignInState extends State<SignIn> {
               },
               child: Text("Create New Account?"),
             ),
+            SizedBox(height: 1),
+            TextButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => passwordreset()),
+                );
+              },
+              child: Text("Forgot Password?"),
+            ),
             SizedBox(height: 20),
-            SizedBox(height: 20),
+
             ElevatedButton(
               onPressed: () async {
                 if (emailctrl.text == "" || passwordctrl == "") {
@@ -105,6 +116,7 @@ class _SignInState extends State<SignIn> {
               child: Text("SignIn"),
             ),
             SizedBox(height: 20),
+
             ElevatedButton(
               onPressed: () async {
                 final GoogleSignIn _googleSignIn = GoogleSignIn();
